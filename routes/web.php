@@ -13,6 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// passing data from router url to blade template
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+// Route::get('about', function () {
+//     return view('about');
+// });
+
+//Route::view("about",'about');
+
+Route::get('about/{data}', function ($data) {
+    return view('about', ['data'=>$data]);  
+});
+
+Route::view("contact",'contact');
+
+// redirect exp:
+Route::get('redirect', function () {
+    return redirect('contact');  
+});
+
+
+//Route::get('/', 'TodoController@index');
+// Route::get('/', [RegistrationController::class, 'create']);
+
+// use App\Http\Controllers\TodoController;
+
+// Route::get('/', [TodoController::class, 'index']);
+
